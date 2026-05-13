@@ -304,13 +304,14 @@ export default function Dashboard() {
         {isAdmin && <SidebarItem icon={<BarChart3 />} label="Stats" active={activeTab==="stats"} onClick={()=>setActiveTab("stats")} />}
         <SidebarItem icon={<FileText />} label="Facturas" active={activeTab==="facturas"} onClick={()=>setActiveTab("facturas")} />
         <SidebarItem icon={<Wallet />} label="Caja" active={activeTab==="boxMoney"} onClick={()=>setActiveTab("boxMoney")} />
-        <div className="mt-auto w-full px-3 pt-6">
+      
         <button className="flex items-center gap-3 p-3 rounded-xl w-full text-white hover:bg-white/20 transition-all duration-200">
           <User className="text-white shrink-0"  />
           <span className="hidden group-hover:block whitespace-nowrap">
             {user?.nombre || "Usuario"}
           </span>
         </button>
+      <div className="mt-auto w-full px-3 pt-6">
   <div className="mt-auto w-full px-3">
 
 </div>
