@@ -294,12 +294,11 @@ export default function Dashboard() {
   return (
 
   <div className="w-screen h-screen flex bg-white">
-{activeTab === "ventas" && <BubbleBackground />}
+    {activeTab === "ventas" && <BubbleBackground />}
     {/* SIDEBAR */}
     <nav className="group relative z-50 w-20 shrink-0 overflow-hidden bg-[#FF9F1C] py-8 text-white transition-all duration-300 hover:w-64">
 
       <div className="flex flex-col gap-4 w-full px-3">
-        {isAdmin && <SidebarItem icon={<LayoutDashboard />} label="Dash" active={activeTab==="dash"} onClick={()=>setActiveTab("dash")} />}
         <SidebarItem icon={<ShoppingCart />} label="Ventas" active={activeTab==="ventas"} onClick={()=>setActiveTab("ventas")} />
         <SidebarItem icon={<Package />} label="Stock" active={activeTab==="stock"} onClick={()=>setActiveTab("stock")} />
         {isAdmin && <SidebarItem icon={<BarChart3 />} label="Stats" active={activeTab==="stats"} onClick={()=>setActiveTab("stats")} />}
@@ -307,12 +306,11 @@ export default function Dashboard() {
         <SidebarItem icon={<Wallet />} label="Caja" active={activeTab==="boxMoney"} onClick={()=>setActiveTab("boxMoney")} />
         <div className="mt-auto w-full px-3 pt-6">
 
-  <div className="mt-auto w-full px-3">
+  
 
   <button
     className="flex items-center gap-3 p-3 rounded-xl w-full text-white hover:bg-white/20 transition-all duration-200"
   >
-
     {/* ICONO */}
     <User size={20} className="text-white" />
 
@@ -320,8 +318,8 @@ export default function Dashboard() {
     <span className="hidden group-hover:block whitespace-nowrap">
       {user?.nombre || "Usuario"}
     </span>
-
   </button>
+  <div className="mt-auto w-full px-3">
 
 </div>
 
