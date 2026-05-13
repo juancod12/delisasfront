@@ -312,7 +312,7 @@ export default function Dashboard() {
     className="flex items-center gap-3 p-3 rounded-xl w-full text-white hover:bg-white/20 transition-all duration-200"
   >
     {/* ICONO */}
-    <User size={20} className="text-white" />
+    <User size={50} className="text-white" />
 
     {/* TEXTO */}
     <span className="hidden group-hover:block whitespace-nowrap">
