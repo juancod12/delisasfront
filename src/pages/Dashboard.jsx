@@ -78,14 +78,14 @@ export default function Dashboard() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:8080/products")
+    fetch(`${import.meta.env.VITE_API_URL}/products`)
       .then(res => res.json())
       .then(data => setProducts(data))
       .catch(err => console.error(err));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:8080/config/iva_rate")
+    fetch(`${import.meta.env.VITE_API_URL}/config/iva_rate`)
       .then(res => res.text())
       .then(rate => { if (rate) setIvaRate(parseFloat(rate)); })
       .catch(() => {});
@@ -159,7 +159,7 @@ export default function Dashboard() {
   const loadUsers = async () => {
     if (user?.rol !== "admin") return;
     try {
-      const res = await fetch("http://localhost:8080/users");
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/users`);
       const data = await res.json();
       setManagedUsers(Array.isArray(data) ? data : []);
     } catch {
@@ -175,7 +175,7 @@ export default function Dashboard() {
 
   const saveProfile = async () => {
     try {
-      const res = await fetch(`http://localhost:8080/users/${user.id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/users/${user.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(profileForm)
@@ -191,7 +191,7 @@ export default function Dashboard() {
 
   const createAccount = async () => {
     try {
-      const res = await fetch("http://localhost:8080/auth/register", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(accountForm)
@@ -209,7 +209,7 @@ export default function Dashboard() {
 
   const updateAccountRole = async (account, rol) => {
     try {
-      const res = await fetch(`http://localhost:8080/users/${account.id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/users/${account.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...account, rol })
@@ -227,7 +227,7 @@ export default function Dashboard() {
     if (!shouldDelete) return;
 
     try {
-      const res = await fetch(`http://localhost:8080/users/${accountId}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/users/${accountId}`, {
         method: "DELETE"
       });
 
@@ -264,7 +264,7 @@ export default function Dashboard() {
 
     console.log("ENVIANDO:", salePayload);
 
-    const res = await fetch("http://localhost:8080/sales", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/sales`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -609,7 +609,7 @@ function SettingsModal({
 
   useEffect(() => {
     if (open && isAdmin) {
-      fetch("http://localhost:8080/config/iva_rate")
+      fetch(`${import.meta.env.VITE_API_URL}/config/iva_rate`)
         .then(res => res.text())
         .then(rate => { if (rate) setIvaRateInput(rate); })
         .catch(() => {});
@@ -619,7 +619,7 @@ function SettingsModal({
   const saveIvaRate = async () => {
     setLoadingIva(true);
     try {
-      await fetch("http://localhost:8080/config/iva_rate", {
+      await fetch(`${import.meta.env.VITE_API_URL}/config/iva_rate`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ value: ivaRateInput })

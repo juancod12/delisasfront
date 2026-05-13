@@ -18,7 +18,7 @@ const ProductCard = memo(function ProductCard({ product, onAdd, index }) {
   const getImage = () => {
     if (!product.img || imgErr) return "https://placehold.co/300x200?text=Sin+imagen";
     if (product.img.startsWith("http")) return product.img;
-    return `http://localhost:8080${product.img}`;
+    return `${import.meta.env.VITE_API_URL}${product.img}`;
   };
 
   const formatPrice = (value) => new Intl.NumberFormat("es-CO").format(value);

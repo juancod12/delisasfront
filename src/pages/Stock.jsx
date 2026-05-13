@@ -27,7 +27,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import InventoryModal from "./InventoryModal";
 
-const API = "http://localhost:8080";
+const API = import.meta.env.VITE_API_URL;
 const LOW_STOCK_LIMIT = 5;
 
 const emptyProduct = {

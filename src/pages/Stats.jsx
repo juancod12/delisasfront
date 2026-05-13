@@ -20,7 +20,7 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import "react-calendar/dist/Calendar.css";
 
-const API = "http://localhost:8080";
+const API = import.meta.env.VITE_API_URL;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const PERIODS = { day: "Dia", week: "Semana", year: "Ano" };
 const PAYMENT_FILTERS = {
@@ -1246,7 +1246,3 @@ function formatDateLabel(date) {
 function formatCompactDate(date) {
   return date.toLocaleDateString("es-CO", { day: "2-digit", month: "short", year: "numeric" });
 }
-
-
-
-

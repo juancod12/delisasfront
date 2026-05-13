@@ -17,7 +17,7 @@ export default function InventoryModal({ date, onClose }) {
 
   useEffect(() => {
     const loadAll = async () => {
-      const resProducts = await fetch("http://localhost:8080/products");
+      const resProducts = await fetch(`${import.meta.env.VITE_API_URL}/products`);
       const productsData = await resProducts.json();
 
       const start = new Date(date);
@@ -27,7 +27,7 @@ export default function InventoryModal({ date, onClose }) {
       end.setHours(23, 59, 59, 999);
 
       const resMov = await fetch(
-        `http://localhost:8080/products/inventory?start=${toLocalDateTimeParam(start)}&end=${toLocalDateTimeParam(end)}`
+        `${import.meta.env.VITE_API_URL}/products/inventory?start=${toLocalDateTimeParam(start)}&end=${toLocalDateTimeParam(end)}`
       );
 
       const movData = await resMov.json();

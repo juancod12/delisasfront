@@ -22,7 +22,7 @@ import {
   XCircle
 } from "lucide-react";
 
-const API = "http://localhost:8080";
+const API = import.meta.env.VITE_API_URL;
 
 export default function Invoices({ formatCOP, user }) {
   const money = formatCOP || formatCurrency;
